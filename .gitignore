@@ -1,3 +1,7 @@
+dataset/train2014
+*.t7
+*.weight
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
