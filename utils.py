@@ -8,14 +8,14 @@ import numpy  as np
 # Load VGG16 for torch and save
 def init_vgg16(model_folder ='model'):
 	"""load the vgg16 model feature"""
-	if not os.path.exists(model_folder+'/vgg16feature.pth'):
+	if not os.path.exists(model_folder+'/vgg16.weight'):
 		if not os.path.exists(model_folder+'/vgg16.t7'):
 			os.system('wget http://cs.stanford.edu/people/jcjohns/fast-neural-style/models/vgg16.t7 '+model_folder+'/vgg16.t7')
 		vgglua = load_lua(model_folder + '/vgg16.t7')
 		vgg= net.Vgg16Part()
 		for ( src, dst) in zip(vgglua.parameters()[0], vgg.parameters()):
 			dst[:] = src[:]
-		torch.save(vgg.state_dict(), model_folder+'/vgg16feature')
+		torch.save(vgg.state_dict(), model_folder+'/vgg16.weight')
 
 # Loss
 def gram_matrix(y):

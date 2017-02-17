@@ -1,5 +1,7 @@
+debug
 dataset/train2014
 *.t7
+*.model
 *.weight
 
 # Byte-compiled / optimized / DLL files
