@@ -11,7 +11,7 @@ parser.add_argument('--style_size', default=256, type=int)
 # weight of vgg and style | According to paper   1:5 works well
 parser.add_argument('--rate_content_loss', default=1.0, type=float)
 parser.add_argument('--rate_style_loss', default=5.0, type=float)
-parser.add_argument('--prefix', default='model_trained', type=str)
+parser.add_argument('--prefix', default='pre_trained', type=str)
 parser.add_argument('--dataset', default='./dataset', type=str)
 parser.add_argument('--debug', default=False, type=bool)
 
@@ -126,11 +126,11 @@ for epoch in range(args.epoches):
 		optimizer.step()
 		if iter_i%10 == 0:
 			#dt = datetime.now().strftime('%H:%M:%S')
-			print('Epoch %d \t batch %d/%d \t loss is %8.4f'%(epoch, iter_i, n_iter, L.data[0]))
+			print('epoch %d \t batch %6d/%6d \t loss %8.4f'%(epoch, iter_i, n_iter, L.data[0]))
 			#print('epoch {} batch {}/{}    loss is {}'.format(epoch, iter_i, n_iter, L.data[0]))
 		
 		if args.checkpoint > 0 and 1 == iter_i % args.checkpoint:
-			utils.save_model(style_model, 'model/{}_{}_{}.model'.format(args.prefix, epoch, iter_i))
+			utils.save_model(style_model, './model/{}_{}_{}.model'.format(args.prefix, epoch, iter_i))
 		iter_i = iter_i + 1
 	utils.save_model(style_model, './model/{}_{}.model'.format(args.prefix, epoch))
 	end_time = datetime.now().strftime('%H:%M:%S')
