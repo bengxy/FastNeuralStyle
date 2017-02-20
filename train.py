@@ -5,7 +5,7 @@ parser.add_argument('--epoches', default=2, type=int)
 parser.add_argument('--lr', default=0.001, type=float)
 parser.add_argument('--style_image', default='images/wave.jpg', type=str)
 parser.add_argument('--batch_size', default=4, type=int)
-parser.add_argument('--checkpoint', default=10000, type=int)
+parser.add_argument('--checkpoint', default=0, type=int)
 parser.add_argument('--image_size', default=256, type=int)
 parser.add_argument('--style_size', default=256, type=int)
 # weight of vgg and style | According to paper   1:5 works well

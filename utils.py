@@ -28,8 +28,8 @@ def gram_matrix(y):
 # Image Processing
 def shift_mean(X):
 	"""Image Color normalization"""
-	tensor = type(X.data)
-	mean = tensor(X.data.size())
+	tensortype = type(X.data)
+	mean = tensortype(X.data.size())
 	mean[:, 0, :, :] = 103.939
 	mean[:, 1, :, :] = 116.779
 	mean[:, 2, :, :] = 123.680
