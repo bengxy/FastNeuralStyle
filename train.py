@@ -90,7 +90,8 @@ for epoch in range(args.epoches):
 		optimizer.zero_grad()
 		current_bs = len(batch[1])  # current_bs length as a mask for gram_style
 		data = batch[0].clone()
-		#data = utils.excg_rgb_bgr(data)
+		data = utils.excg_rgb_bgr(data)
+		
 		if use_cuda:
 			data = data.cuda()
 		# style diff
@@ -101,8 +102,8 @@ for epoch in range(args.epoches):
 
 		# y -> RGB2BGR -> mean -> vgg 
 		# batch(xc) -> RGB2BGR -> mean -> vgg
-		utils.excg_rgb_bgr(y)
-		utils.excg_rgb_bgr(X_content)
+		#utils.excg_rgb_bgr(y)
+		#utils.excg_rgb_bgr(X_content)
 
 		utils.shift_mean(y)
 		utils.shift_mean(X_content)

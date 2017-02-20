@@ -29,7 +29,7 @@ print('=> Load Origin Image')
 start_time = datetime.now().strftime('%H:%M:%S')
 img = Image.open(args.input)
 img = np.array(img)  # PIL->numpy
-#img = np.array(img[..., ::-1])  # RGB->BGR
+img = np.array(img[..., ::-1])  # RGB->BGR
 img = img.transpose(2, 0, 1)  # HWC->CHW
 img = img.reshape((1, ) + img.shape)  # CHW->BCHW
 img = torch.from_numpy(img).float()
@@ -45,7 +45,7 @@ end_time = datetime.now().strftime('%H:%M:%S')
 print('=> Save ')
 output = output.data.cpu().clamp(0, 255).byte().numpy()
 output = output[0].transpose((1, 2, 0))
-#output = output[..., ::-1]
+output = output[..., ::-1]
 output = Image.fromarray(output)
 output.save(args.output)
 print('Start Time: %s\nEnd Time: %s'%(start_time,end_time))
