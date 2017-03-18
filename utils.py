@@ -14,11 +14,19 @@ def init_vgg16(model_folder ='model'):
 		vgglua = load_lua(model_folder + '/vgg16.t7')
 		vgg= net.Vgg16Part()
 		for ( src, dst) in zip(vgglua.parameters()[0], vgg.parameters()):
-			dst[:] = src[:]
+			dst[:].data = src[:]  
+			# here comes a bug in pytorch version 0.1.10
+			# change to dst[:].data = src[:]
+			# ref to issue: 
 		torch.save(vgg.state_dict(), model_folder+'/vgg16.weight')
 
-# Loss
+# Gram Loss  
 def gram_matrix(y):
+	"""
+	for each channel  in C of the feature map:
+		element-wise multiply and sum together 
+	return a C*C matrix
+	"""
 	(b, ch, h, w) = y.size()
 	features = y.view(b, ch, w*h)
 	features_t = features.transpose(1,2)
@@ -33,7 +41,6 @@ def shift_mean(X):
 	mean[:, 0, :, :] = 103.939
 	mean[:, 1, :, :] = 116.779
 	mean[:, 2, :, :] = 123.680
-	#mean[:,0:3,:,:] = tensor([103.939, 116.779, 123.680])
 	X -= Variable(mean)
 
 # save tensor in gpu to disk

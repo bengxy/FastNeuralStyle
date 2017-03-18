@@ -47,11 +47,14 @@ train_loader = DataLoader(train_img, batch_size=args.batch_size, num_workers=4)
 n_iter = len(train_loader)
 print('=> %d Iter Step of 1 Epoch'%n_iter)
 
+# extract pretrained VGG weight
+print('=> Check and Extract pre-trained VGG16 weight')
+utils.init_vgg16()
+
 #init model
 print('=> Init Model')
 style_model = net.StylePart() #empyt model
 vgg_model = net.Vgg16Part() # fill pretrained vgg
-utils.init_vgg16()
 vgg_model.load_state_dict( torch.load('model/vgg16.weight'))
 
 
@@ -100,15 +103,9 @@ for epoch in range(args.epoches):
 
 		X_content = Variable(data.clone(), volatile=True)
 
-		# y -> RGB2BGR -> mean -> vgg 
-		# batch(xc) -> RGB2BGR -> mean -> vgg
-		#utils.excg_rgb_bgr(y)
-		#utils.excg_rgb_bgr(X_content)
-
 		utils.shift_mean(y)
 		utils.shift_mean(X_content)
 
-		#feature_hat = vgg_model(y)
 		feature_generated = vgg_model(y)
 		feature_content = vgg_model(X_content)
 		# content diff
@@ -126,10 +123,8 @@ for epoch in range(args.epoches):
 		L.backward()
 		optimizer.step()
 		if iter_i%10 == 0:
-			#dt = datetime.now().strftime('%H:%M:%S')
 			print('epoch %d \t batch %6d/%6d \t loss %8.4f'%(epoch, iter_i, n_iter, L.data[0]))
-			#print('epoch {} batch {}/{}    loss is {}'.format(epoch, iter_i, n_iter, L.data[0]))
-		
+			
 		if args.checkpoint > 0 and 1 == iter_i % args.checkpoint:
 			utils.save_model(style_model, './model/{}_{}_{}.model'.format(args.prefix, epoch, iter_i))
 		iter_i = iter_i + 1
