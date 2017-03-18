@@ -34,8 +34,10 @@ show generate help
 
 **Style**  
 ![style](https://github.com/bengxy/FastNeuralStyle/raw/master/images/wave.jpg)
+
 **Origin**  
 ![origin](https://github.com/bengxy/FastNeuralStyle/raw/master/images/westlake.jpg)
+
 **Generated**  
 ![gen](https://github.com/bengxy/FastNeuralStyle/raw/master/images/output_westlake.jpg)
 
