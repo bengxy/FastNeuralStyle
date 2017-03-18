@@ -16,4 +16,26 @@ put dataset under ./dataset
      --train2014
      --put_coco_train_here
 
+## Usage
+
+default : 
+`python train.py `
+
+show help
+`python train.py -h`
+
+generate
+`python go.py`
+
+show generate help
+`python go.py -h`
+
+## Result
+
+**Style**
+![style](https://github.com/bengxy/FastNeuralStyle/tree/master/images/wave.jpg)
+**Origin**
+![origin](https://github.com/bengxy/FastNeuralStyle/tree/master/images/westlake.jpg)
+**Generated**
+![gen](https://github.com/bengxy/FastNeuralStyle/tree/master/images/output_westlake.jpg)
 
