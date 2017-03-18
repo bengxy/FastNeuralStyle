@@ -33,9 +33,9 @@ show generate help
 ## Result
 
 **Style**
-![style](https://github.com/bengxy/FastNeuralStyle/tree/master/images/wave.jpg)
+![style](https://github.com/bengxy/FastNeuralStyle/raw/master/images/wave.jpg)
 **Origin**
-![origin](https://github.com/bengxy/FastNeuralStyle/tree/master/images/westlake.jpg)
+![origin](https://github.com/bengxy/FastNeuralStyle/raw/master/images/westlake.jpg)
 **Generated**
-![gen](https://github.com/bengxy/FastNeuralStyle/tree/master/images/output_westlake.jpg)
+![gen](https://github.com/bengxy/FastNeuralStyle/raw/master/images/output_westlake.jpg)
 
