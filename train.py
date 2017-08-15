@@ -1,5 +1,4 @@
 import argparse
-from datetime import datetime
 parser = argparse.ArgumentParser(description='Fast Neural Style')
 parser.add_argument('--epoches', default=2, type=int)
 parser.add_argument('--lr', default=0.001, type=float)
@@ -20,6 +19,7 @@ args = parser.parse_args()
 if args.debug:
 	args.dataset = './debug/data'
 
+from datetime import datetime
 
 import torch
 

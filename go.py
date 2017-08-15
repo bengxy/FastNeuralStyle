@@ -1,5 +1,11 @@
 from __future__  import print_function
 import argparse
+parser = argparse.ArgumentParser(description='Fast Neural Style - generator')
+parser.add_argument('--model', default='./model/pre_trained.model', type=str)
+parser.add_argument('--input', type=str, help='input image')
+parser.add_argument('--output', type=str, help='output image')
+args = parser.parse_args()
+
 import numpy as np 
 from PIL import Image
 from datetime import datetime
@@ -8,13 +14,6 @@ import torch
 from torch.autograd import Variable
 
 import net
-
-parser = argparse.ArgumentParser(description='Fast Neural Style - generator')
-parser.add_argument('--model', default='./model/pre_trained.model', type=str)
-parser.add_argument('--input', type=str, help='input image')
-parser.add_argument('--output', type=str, help='output image')
-
-args = parser.parse_args()
 
 use_cuda = torch.cuda.is_available()
 
