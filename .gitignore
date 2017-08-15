@@ -1,7 +1,6 @@
 debug
 dataset/train2014
 *.t7
-*.jpg
 *.model
 *.weight
 .DS_Store
