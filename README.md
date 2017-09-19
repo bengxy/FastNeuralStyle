@@ -46,7 +46,7 @@ models are saved in **./model** folder by default.
 
 I also release two pretrained model .
 
-[wave.model](https://cloud.bengxy.com/index.php/s/QF1ZYEBgTVoPzqV)
+[wave.model](https://cloud.bengxy.com/index.php/s/sZ8D8CpVnvjzJck)
 
 You can download and put it under ./model folder
 
