@@ -40,14 +40,3 @@ put dataset under ./dataset, the folder will looks like
 	python go.py -h
 	
 
-# Pretrained Model
-
-models are saved in **./model** folder by default.
-
-I also release two pretrained model .
-
-[wave.model](https://cloud.bengxy.com/index.php/s/wjy9KecTIieMILH)
-
-You can download and put it under ./model folder
-
-
